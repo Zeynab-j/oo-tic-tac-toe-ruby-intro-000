@@ -1,11 +1,4 @@
-class TicTacToe
-  def initialize(board = nil)
-    @board = board || Array.new(9, " ")
-  end
-end
-
-
-  WIN_COMBINATIONS = [
+WIN_COMBINATIONS = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -43,18 +36,6 @@ end
 def valid_move?(index)
   index.between?(0,8) && !position_taken?(index)
 end
-def turn
-    puts "Please enter 1-9:"
-    input = gets.strip
-    index = input_to_index(input)
-    char = current_player
-    if valid_move?(index)
-      move(index, char)
-      display_board
-    else
-      turn
-    end
-
 
 def turn_count
   turn = 0
@@ -67,7 +48,7 @@ def turn_count
 end
 
 def current_player
-  
+  #if the turn count is an even number, that means O just went, so the next/current player is X
   num_turns = turn_count
   if num_turns % 2 == 0
     player = "X"
